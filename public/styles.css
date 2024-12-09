@@ -1,89 +1,38 @@
-body {
-  background-color: #0f0f0f;
-  color: #f0f0f0;
-  font-family: "Courier New", Courier, monospace;
-  margin: 0;
-  padding: 0;
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.header h1 {
-  font-size: 3em;
-  color: #ff5555;
+.tab, .active-tab {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
+  cursor: pointer;
   text-transform: uppercase;
-}
-
-.auth-section, .paste-section {
-  margin-bottom: 40px;
-}
-
-h2 {
-  color: #ff5555;
-  text-transform: uppercase;
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-
-.input, .textarea {
-  display: block;
-  width: 100%;
-  max-width: 500px;
-  margin: 10px auto;
-  padding: 10px;
   background-color: #1a1a1a;
   color: #f0f0f0;
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
 }
 
-.button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 10px auto;
+.active-tab {
   background-color: #ff5555;
   color: #f0f0f0;
-  text-transform: uppercase;
-  font-size: 1em;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  font-weight: bold;
 }
 
-.button:hover {
-  background-color: #ff7777;
+.paste-item a {
+  color: #ff5555;
+  text-decoration: none;
 }
 
-.pastes {
-  list-style-type: none;
-  padding: 0;
+.paste-item a:hover {
+  text-decoration: underline;
 }
 
-.paste-item {
+.paste-content pre {
   background-color: #1a1a1a;
-  margin: 10px 0;
-  padding: 15px;
+  padding: 10px;
   border-radius: 5px;
-  word-wrap: break-word;
-}
-
-.footer {
-  text-align: center;
-  margin-top: 40px;
-  color: #666;
-}
-
-.footer p {
-  font-size: 0.8em;
+  color: #f0f0f0;
+  white-space: pre-wrap;
 }
