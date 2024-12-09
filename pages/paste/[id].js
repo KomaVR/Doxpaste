@@ -1,38 +1,38 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { supabase } from '../../utils/supabaseClient';
 
-export default function Paste() {
+export default function PastePage() {
   const router = useRouter();
   const { id } = router.query;
   const [paste, setPaste] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (id) fetchPaste();
+    const fetchPaste = async () => {
+      const { data, error } = await supabase.from('pastes').select('*').eq('id', id).single();
+      if (error) console.error(error);
+      else setPaste(data);
+    };
+
+    const fetchUser = async () => {
+      const { data: user } = await supabase.auth.getUser();
+      setUser(user);
+    };
+
+    if (id) {
+      fetchPaste();
+      fetchUser();
+    }
   }, [id]);
 
-  const fetchPaste = async () => {
-    const res = await fetch(`/api/pastes?id=${id}`);
-    setPaste(await res.json());
-  };
+  if (!paste) return <p>Loading...</p>;
 
   return (
-    <div className="container">
-      <header className="header">
-        <h1>Doxbin</h1>
-      </header>
-      <main>
-        {paste ? (
-          <section className="paste-content">
-            <h2>{paste.title || `Paste #${id}`}</h2>
-            <pre>{paste.content}</pre>
-          </section>
-        ) : (
-          <p>Loading paste...</p>
-        )}
-      </main>
-      <footer className="footer">
-        <p>© 2024 Doxbin Clone</p>
-      </footer>
+    <div style={{ padding: '20px' }}>
+      <h1>{paste.title}</h1>
+      <p>Author: {user ? paste.author : 'ANONYMOUS'}</p>
+      <p>{paste.content}</p>
     </div>
   );
 }
