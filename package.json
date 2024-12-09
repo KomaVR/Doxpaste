@@ -1,0 +1,13 @@
+{
+  "name": "doxpaste",
+  "version": "1.0.0",
+  "description": "A minimal pastebin-style site with account and paste functionality.",
+  "main": "index.js",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "path": "^0.12.7"
+  }
+}
