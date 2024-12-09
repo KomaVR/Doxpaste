@@ -1,38 +1,85 @@
-/* styles/globals.css */
+/* globals.css */
 
-/* Global reset and font */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Tailwind base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for a futuristic look */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  padding: 0;
-  background-color: #111;
-  color: #f0f0f0;
 }
 
-/* Glowing effect for titles and important text */
+body {
+  @apply bg-gradient-to-r from-purple-900 via-indigo-800 to-black text-white font-sans;
+  font-family: 'Roboto', sans-serif;
+  background-attachment: fixed;
+  line-height: 1.6;
+}
+
+/* Smooth transition for hover and focus effects */
+*, *::before, *::after {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect for buttons and links */
+a, button {
+  @apply hover:scale-105 hover:text-cyan-500 transition-all duration-300;
+}
+
+h1, h2, h3 {
+  @apply tracking-tight text-white font-extrabold;
+}
+
+/* Glow text effect */
 .glow-text {
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.6), 0 0 10px rgba(0, 255, 255, 0.8), 0 0 15px rgba(0, 255, 255, 1);
+  text-shadow: 0 0 5px #00bcd4, 0 0 10px #00bcd4, 0 0 15px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #00bcd4, 0 0 40px #00bcd4, 0 0 50px #00bcd4;
 }
 
-@keyframes glow {
-  0% {
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6), 0 0 10px rgba(0, 255, 255, 0.8), 0 0 15px rgba(0, 255, 255, 1);
-  }
-  50% {
-    text-shadow: 0 0 10px rgba(0, 255, 255, 1), 0 0 20px rgba(0, 255, 255, 1), 0 0 30px rgba(0, 255, 255, 1);
-  }
-  100% {
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6), 0 0 10px rgba(0, 255, 255, 0.8), 0 0 15px rgba(0, 255, 255, 1);
-  }
+/* Futuristic Card */
+.futuristic-card {
+  @apply bg-gradient-to-r from-blue-900 to-purple-800 rounded-xl shadow-xl p-6;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
 }
 
-/* Adding subtle glowing animations to headings and text */
-.text-glow-animation {
-  animation: glow 1.5s infinite alternate;
+/* Button styles */
+button {
+  @apply bg-cyan-500 text-white py-2 px-6 rounded-xl font-bold transition-all duration-300;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Optional: Button hover animation */
 button:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
+  @apply bg-cyan-600 shadow-2xl;
 }
+
+/* Text Shadow for titles */
+.text-shadow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Add some slight neon effect to input elements */
+input, textarea {
+  @apply bg-transparent border-b-2 border-gray-600 text-white p-2 mt-2 focus:outline-none focus:border-cyan-500;
+}
+
+input:focus, textarea:focus {
+  @apply border-cyan-500;
+}
+
+/* Custom scrollbar for a futuristic UI */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4c4c4c;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
