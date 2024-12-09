@@ -1,40 +1,42 @@
-import { useState, useEffect } from 'react';
-import { supabase } from '../utils/supabaseClient';
+import { useState } from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css'; // Import default styles for tabs
 import Link from 'next/link';
 
-export default function Home() {
-  const [pastes, setPastes] = useState([]);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const fetchPastes = async () => {
-      const { data, error } = await supabase.from('pastes').select('*');
-      if (error) console.error(error);
-      else setPastes(data);
-    };
-
-    const fetchUser = async () => {
-      const { data: user } = await supabase.auth.getUser();
-      setUser(user);
-    };
-
-    fetchPastes();
-    fetchUser();
-  }, []);
-
+const Home = () => {
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Doxbin-Style Pastes</h1>
-      {user ? <p>Logged in as: {user.email}</p> : <p>Viewing as: ANONYMOUS</p>}
-      <ul>
-        {pastes.map((paste) => (
-          <li key={paste.id}>
-            <Link href={`/paste/${paste.id}`}>
-              <a>{paste.title}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div>
+      <h1>Welcome to Doxbin Style Site</h1>
+      <Tabs>
+        <TabList>
+          <Tab>Login</Tab>
+          <Tab>Register</Tab>
+          <Tab>Pastes</Tab>
+          <Tab>Upload Paste</Tab>
+        </TabList>
+
+        <TabPanel>
+          <h2>Login</h2>
+          <Link href="/login">Go to Login</Link>
+        </TabPanel>
+
+        <TabPanel>
+          <h2>Register</h2>
+          <Link href="/register">Go to Register</Link>
+        </TabPanel>
+
+        <TabPanel>
+          <h2>Pastes</h2>
+          <Link href="/pastes">View Pastes</Link>
+        </TabPanel>
+
+        <TabPanel>
+          <h2>Upload Paste</h2>
+          <Link href="/upload">Go to Upload Paste</Link>
+        </TabPanel>
+      </Tabs>
     </div>
   );
-}
+};
+
+export default Home;
