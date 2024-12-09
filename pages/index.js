@@ -39,36 +39,52 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <h1>Doxbin-Style Site</h1>
-      <div>
+    <div className="container">
+      <h1>Doxbin</h1>
+      <div className="auth-section">
         <h2>Register</h2>
-        <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+        <input
+          placeholder="Email"
+          className="input"
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <input
           type="password"
           placeholder="Password"
+          className="input"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={handleRegister}>Register</button>
+        <button onClick={handleRegister} className="button">
+          Register
+        </button>
       </div>
-      <div>
+      <div className="auth-section">
         <h2>Login</h2>
-        <button onClick={handleLogin}>Login</button>
+        <button onClick={handleLogin} className="button">
+          Login
+        </button>
       </div>
-      <div>
+      <div className="paste-section">
         <h2>Create Paste</h2>
         <textarea
           placeholder="Paste content"
+          className="textarea"
           onChange={(e) => setContent(e.target.value)}
         />
-        <button onClick={createPaste}>Create</button>
+        <button onClick={createPaste} className="button">
+          Create
+        </button>
       </div>
-      <div>
+      <div className="paste-section">
         <h2>View Pastes</h2>
-        <button onClick={fetchPastes}>Fetch Pastes</button>
-        <ul>
+        <button onClick={fetchPastes} className="button">
+          Fetch Pastes
+        </button>
+        <ul className="pastes">
           {pastes.map((paste, index) => (
-            <li key={index}>{paste}</li>
+            <li key={index} className="paste-item">
+              {paste}
+            </li>
           ))}
         </ul>
       </div>
