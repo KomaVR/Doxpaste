@@ -1,16 +1,25 @@
 {
   "name": "doxbin-style-site",
   "version": "1.0.0",
-  "description": "A Doxbin-style site.",
+  "private": true,
+  "dependencies": {
+    "next": "^13.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-tabs": "^3.2.0",
+    "@supabase/supabase-js": "^2.0.0",
+    "vercel": "^23.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.32.0",
+    "eslint-config-next": "^13.4.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.0.0",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+  "eslintConfig": {
+    "extends": "next/core-web-vitals"
   }
 }
