@@ -1,13 +1,17 @@
 {
   "name": "doxpaste",
   "version": "1.0.0",
-  "description": "A minimal pastebin-style site with account and paste functionality.",
   "main": "index.js",
   "scripts": {
-    "start": "vercel dev"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
-    "fs-extra": "^11.1.1",
-    "path": "^0.12.7"
-  }
+    "@supabase/supabase-js": "^2.0.0",
+    "next": "^13.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {}
 }
