@@ -3,8 +3,8 @@ import { useState } from "react";
 export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [pastes, setPastes] = useState([]);
   const [content, setContent] = useState("");
+  const [pastes, setPastes] = useState([]);
 
   const handleRegister = async () => {
     const res = await fetch("/api/register", {
@@ -36,58 +36,69 @@ export default function Home() {
       body: JSON.stringify({ content }),
     });
     alert((await res.json()).message);
+    fetchPastes(); // Refresh pastes after creating one
   };
 
   return (
     <div className="container">
-      <h1>Doxbin</h1>
-      <div className="auth-section">
-        <h2>Register</h2>
-        <input
-          placeholder="Email"
-          className="input"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="input"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={handleRegister} className="button">
-          Register
-        </button>
-      </div>
-      <div className="auth-section">
-        <h2>Login</h2>
-        <button onClick={handleLogin} className="button">
-          Login
-        </button>
-      </div>
-      <div className="paste-section">
-        <h2>Create Paste</h2>
-        <textarea
-          placeholder="Paste content"
-          className="textarea"
-          onChange={(e) => setContent(e.target.value)}
-        />
-        <button onClick={createPaste} className="button">
-          Create
-        </button>
-      </div>
-      <div className="paste-section">
-        <h2>View Pastes</h2>
-        <button onClick={fetchPastes} className="button">
-          Fetch Pastes
-        </button>
-        <ul className="pastes">
-          {pastes.map((paste, index) => (
-            <li key={index} className="paste-item">
-              {paste}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <header className="header">
+        <h1>Doxpaste</h1>
+      </header>
+      <main>
+        <section className="auth-section">
+          <h2>Register</h2>
+          <input
+            placeholder="Email"
+            className="input"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="input"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button onClick={handleRegister} className="button">
+            Register
+          </button>
+        </section>
+
+        <section className="auth-section">
+          <h2>Login</h2>
+          <button onClick={handleLogin} className="button">
+            Login
+          </button>
+        </section>
+
+        <section className="paste-section">
+          <h2>Create Paste</h2>
+          <textarea
+            placeholder="Paste content"
+            className="textarea"
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <button onClick={createPaste} className="button">
+            Create Paste
+          </button>
+        </section>
+
+        <section className="paste-section">
+          <h2>View Pastes</h2>
+          <button onClick={fetchPastes} className="button">
+            Fetch Pastes
+          </button>
+          <ul className="pastes">
+            {pastes.map((paste, index) => (
+              <li key={index} className="paste-item">
+                {paste}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+      <footer className="footer">
+        <p>© 2024 Doxpaste</p>
+      </footer>
     </div>
   );
 }
