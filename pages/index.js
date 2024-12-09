@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Home() {
+  const [tab, setTab] = useState("register"); // "register" or "login"
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [content, setContent] = useState("");
   const [pastes, setPastes] = useState([]);
+
+  useEffect(() => {
+    fetchPastes();
+  }, []);
+
+  const fetchPastes = async () => {
+    const res = await fetch("/api/pastes");
+    setPastes(await res.json());
+  };
 
   const handleRegister = async () => {
     const res = await fetch("/api/register", {
@@ -24,80 +34,80 @@ export default function Home() {
     alert((await res.json()).message);
   };
 
-  const fetchPastes = async () => {
-    const res = await fetch("/api/pastes");
-    setPastes(await res.json());
-  };
-
-  const createPaste = async () => {
-    const res = await fetch("/api/pastes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content }),
-    });
-    alert((await res.json()).message);
-    fetchPastes(); // Refresh pastes after creating one
-  };
-
   return (
     <div className="container">
       <header className="header">
-        <h1>Doxpaste</h1>
+        <h1>Doxbin</h1>
       </header>
       <main>
-        <section className="auth-section">
-          <h2>Register</h2>
-          <input
-            placeholder="Email"
-            className="input"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="input"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button onClick={handleRegister} className="button">
+        <div className="tabs">
+          <button
+            className={tab === "register" ? "active-tab" : "tab"}
+            onClick={() => setTab("register")}
+          >
             Register
           </button>
-        </section>
-
-        <section className="auth-section">
-          <h2>Login</h2>
-          <button onClick={handleLogin} className="button">
+          <button
+            className={tab === "login" ? "active-tab" : "tab"}
+            onClick={() => setTab("login")}
+          >
             Login
           </button>
-        </section>
+        </div>
+
+        {tab === "register" ? (
+          <section className="auth-section">
+            <h2>Register</h2>
+            <input
+              placeholder="Email"
+              className="input"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="input"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button onClick={handleRegister} className="button">
+              Register
+            </button>
+          </section>
+        ) : (
+          <section className="auth-section">
+            <h2>Login</h2>
+            <input
+              placeholder="Email"
+              className="input"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="input"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button onClick={handleLogin} className="button">
+              Login
+            </button>
+          </section>
+        )}
 
         <section className="paste-section">
-          <h2>Create Paste</h2>
-          <textarea
-            placeholder="Paste content"
-            className="textarea"
-            onChange={(e) => setContent(e.target.value)}
-          />
-          <button onClick={createPaste} className="button">
-            Create Paste
-          </button>
-        </section>
-
-        <section className="paste-section">
-          <h2>View Pastes</h2>
-          <button onClick={fetchPastes} className="button">
-            Fetch Pastes
-          </button>
+          <h2>Pastes</h2>
           <ul className="pastes">
             {pastes.map((paste, index) => (
               <li key={index} className="paste-item">
-                {paste}
+                <Link href={`/paste/${paste.id}`}>
+                  <a>{paste.title || `Paste #${index + 1}`}</a>
+                </Link>
               </li>
             ))}
           </ul>
         </section>
       </main>
       <footer className="footer">
-        <p>© 2024 Doxpaste</p>
+        <p>© 2024 Doxbin Clone</p>
       </footer>
     </div>
   );
