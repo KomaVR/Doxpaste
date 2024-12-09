@@ -1,5 +1,7 @@
 import { Tab } from '@headlessui/react';
 import Link from 'next/link';
+import '../styles/globals.css'
+
 
 const Home = () => {
   return (
