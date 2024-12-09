@@ -1,7 +1,7 @@
 {
   "name": "doxbin-style-site",
   "version": "1.0.0",
-  "description": "A Doxbin-style site with account management and pastes.",
+  "description": "A Doxbin-style site.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
