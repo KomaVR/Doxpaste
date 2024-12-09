@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Home = () => {
   return (
     <div className="max-w-4xl mx-auto mt-10 p-5">
-      <h1 className="text-3xl font-semibold text-center mb-5">Welcome to Doxbin Style Site</h1>
+      <h1 className="text-3xl font-semibold text-center mb-5">Welcome to Doxpaste</h1>
       <Tab.Group>
         <Tab.List className="flex space-x-4 justify-center mb-4">
           <Tab
