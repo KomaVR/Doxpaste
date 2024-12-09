@@ -1,11 +1,9 @@
 import { Tab } from '@headlessui/react';
 import Link from 'next/link';
-import '../styles/globals.css'
-
 
 const Home = () => {
   return (
-    <div className="bg-gradient-to-r from-black via-gray-900 to-black min-h-screen text-white font-sans">
+    <div className="bg-gradient-to-r from-purple-900 via-indigo-800 to-black min-h-screen text-white font-sans">
       <div className="max-w-5xl mx-auto mt-20 p-8">
         <h1 className="text-6xl font-extrabold text-cyan-500 mb-10 text-center tracking-widest transform transition-all duration-300 hover:scale-105 glow-text">
           Welcome to Doxpaste
@@ -28,36 +26,44 @@ const Home = () => {
           </Tab.List>
 
           <Tab.Panels>
-            <Tab.Panel className="p-8 bg-gradient-to-r from-indigo-900 to-blue-900 rounded-xl shadow-xl">
-              <h2 className="text-3xl font-semibold mb-4">Login</h2>
-              <p className="text-lg mb-6">Already have an account? Login to access your pastes and more.</p>
-              <Link href="/login">
-                <a className="text-cyan-400 hover:underline mt-4 inline-block text-xl">Go to Login</a>
-              </Link>
+            <Tab.Panel className="futuristic-card">
+              <h2 className="text-3xl font-semibold mb-4 text-center">Login</h2>
+              <p className="text-lg mb-6 text-center">Already have an account? Login to access your pastes and more.</p>
+              <div className="text-center">
+                <Link href="/login">
+                  <a className="text-cyan-400 hover:underline mt-4 inline-block text-xl">Go to Login</a>
+                </Link>
+              </div>
             </Tab.Panel>
 
-            <Tab.Panel className="p-8 bg-gradient-to-r from-indigo-900 to-blue-900 rounded-xl shadow-xl">
-              <h2 className="text-3xl font-semibold mb-4">Register</h2>
-              <p className="text-lg mb-6">Sign up to start creating and sharing your pastes.</p>
-              <Link href="/register">
-                <a className="text-cyan-400 hover:underline mt-4 inline-block text-xl">Go to Register</a>
-              </Link>
+            <Tab.Panel className="futuristic-card">
+              <h2 className="text-3xl font-semibold mb-4 text-center">Register</h2>
+              <p className="text-lg mb-6 text-center">Sign up to start creating and sharing your pastes.</p>
+              <div className="text-center">
+                <Link href="/register">
+                  <a className="text-cyan-400 hover:underline mt-4 inline-block text-xl">Go to Register</a>
+                </Link>
+              </div>
             </Tab.Panel>
 
-            <Tab.Panel className="p-8 bg-gradient-to-r from-indigo-900 to-blue-900 rounded-xl shadow-xl">
-              <h2 className="text-3xl font-semibold mb-4">Pastes</h2>
-              <p className="text-lg mb-6">Explore all pastes shared by other users.</p>
-              <Link href="/pastes">
-                <a className="text-cyan-400 hover:underline mt-4 inline-block text-xl">View Pastes</a>
-              </Link>
+            <Tab.Panel className="futuristic-card">
+              <h2 className="text-3xl font-semibold mb-4 text-center">Pastes</h2>
+              <p className="text-lg mb-6 text-center">Explore all pastes shared by other users.</p>
+              <div className="text-center">
+                <Link href="/pastes">
+                  <a className="text-cyan-400 hover:underline mt-4 inline-block text-xl">View Pastes</a>
+                </Link>
+              </div>
             </Tab.Panel>
 
-            <Tab.Panel className="p-8 bg-gradient-to-r from-indigo-900 to-blue-900 rounded-xl shadow-xl">
-              <h2 className="text-3xl font-semibold mb-4">Upload Paste</h2>
-              <p className="text-lg mb-6">Upload your own paste to share with the community.</p>
-              <Link href="/upload">
-                <a className="text-cyan-400 hover:underline mt-4 inline-block text-xl">Go to Upload Paste</a>
-              </Link>
+            <Tab.Panel className="futuristic-card">
+              <h2 className="text-3xl font-semibold mb-4 text-center">Upload Paste</h2>
+              <p className="text-lg mb-6 text-center">Upload your own paste to share with the community.</p>
+              <div className="text-center">
+                <Link href="/upload">
+                  <a className="text-cyan-400 hover:underline mt-4 inline-block text-xl">Go to Upload Paste</a>
+                </Link>
+              </div>
             </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>
