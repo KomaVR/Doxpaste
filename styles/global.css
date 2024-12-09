@@ -1,0 +1,38 @@
+/* styles/globals.css */
+
+/* Global reset and font */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #111;
+  color: #f0f0f0;
+}
+
+/* Glowing effect for titles and important text */
+.glow-text {
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.6), 0 0 10px rgba(0, 255, 255, 0.8), 0 0 15px rgba(0, 255, 255, 1);
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6), 0 0 10px rgba(0, 255, 255, 0.8), 0 0 15px rgba(0, 255, 255, 1);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 1), 0 0 20px rgba(0, 255, 255, 1), 0 0 30px rgba(0, 255, 255, 1);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6), 0 0 10px rgba(0, 255, 255, 0.8), 0 0 15px rgba(0, 255, 255, 1);
+  }
+}
+
+/* Adding subtle glowing animations to headings and text */
+.text-glow-animation {
+  animation: glow 1.5s infinite alternate;
+}
+
+/* Optional: Button hover animation */
+button:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
